@@ -1,9 +1,13 @@
 /** @format */
 import multiparty from "multiparty";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { isAdminRequest } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
 import fs from "fs";
 import mime from "mime-types";
 const bucketName = "ecommerce1181";
+await mongooseConnect();
+await isAdminRequest(req, res);
 
 export default async function UploadController(req, res) {
   const form = new multiparty.Form();

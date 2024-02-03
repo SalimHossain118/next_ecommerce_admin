@@ -2,13 +2,16 @@
 
 /** @format */
 
-import { Schema, model, connection } from "mongoose";
+import { ObjectId } from "mongodb";
+import mongoose, { Schema, model, connection } from "mongoose";
 
 const ProductSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   price: { type: Number, required: true },
   images: [{ type: String }],
+  category: { type: mongoose.Types.ObjectId, ref: "Category" },
+  properties: { type: Object },
 });
 
 let ProductModel;
@@ -22,14 +25,3 @@ try {
 }
 
 export { ProductModel };
-
-// import { Schema, model, models } from "mongoose";
-
-// const ProductSchema = new Schema({
-//   title: { type: String, required: true },
-//   description: { type: String, required: true },
-//   price: { type: Number, required: true },
-// });
-
-// export const ProductModel =
-//   models.ProductModel || model("Product2", ProductSchema);

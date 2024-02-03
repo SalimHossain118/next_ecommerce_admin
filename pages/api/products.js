@@ -3,11 +3,13 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import { ProductModel } from "@/models/CreateProductModel";
 import mongoose from "mongoose";
+import { isAdminRequest } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
 
 export default async function handler(req, res) {
-  const { method } = req;
-
   await mongooseConnect();
+  await isAdminRequest(req, res);
+  const { method } = req;
 
   if (method === "GET") {
     if (req.query.id) {
@@ -20,12 +22,15 @@ export default async function handler(req, res) {
 
   if (method === "POST") {
     try {
-      const { title, description, price, images } = req.body;
+      const { title, description, price, images, category, properties } =
+        req.body;
       const newProduct = await ProductModel.create({
         title,
         description,
         price,
         images,
+        category,
+        properties,
       });
       res.json(newProduct);
       console.log("New product created:", newProduct);
@@ -37,10 +42,11 @@ export default async function handler(req, res) {
 
   if (method === "PUT") {
     try {
-      const { title, description, price, images, _id } = req.body;
+      const { title, description, price, images, category, properties, _id } =
+        req.body;
       const updatedProducts = await ProductModel.updateOne(
         { _id },
-        { title, description, price, images },
+        { title, description, price, images, category, properties },
         { new: true }
       );
       res.json(updatedProducts);

@@ -24,13 +24,13 @@ export default function Products() {
     <Layout>
       <Link
         href={"/products/new"}
-        className="bg-blue-900 text-white p-2  rounded-lg">
+        className="bg-primary text-white p-2  rounded-lg">
         Add New Product
       </Link>
       <table className="basic mt-3 p-2">
         <thead className="">
           <tr>
-            <td className="bg-yellow-300 p-2 rounded-lg mb-2 text-white  w-full">
+            <td className=" p-2 text-sm text-gray-400 rounded-lg mb-2  w-full">
               Product Name
             </td>
             <td></td>
@@ -69,7 +69,7 @@ export default function Products() {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    class="w-4 h-4">
+                    className="w-4 h-4">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
