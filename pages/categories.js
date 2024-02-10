@@ -126,6 +126,8 @@ export default function Categories() {
             onChange={(ev) => setParentCategory(ev.target.value)}
             value={parentCategory}>
             <option value="">Please Select Category</option>
+            <option value="dummy1">Dummy Category 1</option>
+            <option value="dummy2">Dummy Category 2</option>
             {categories.length > 0 &&
               categories.map((category) => (
                 <option key={category._id} value={category._id}>

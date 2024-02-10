@@ -5,14 +5,17 @@
 import { ObjectId } from "mongodb";
 import mongoose, { Schema, model, connection } from "mongoose";
 
-const ProductSchema = new Schema({
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  price: { type: Number, required: true },
-  images: [{ type: String }],
-  category: { type: mongoose.Types.ObjectId, ref: "Category" },
-  properties: { type: Object },
-});
+const ProductSchema = new Schema(
+  {
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    price: { type: Number, required: true },
+    images: [{ type: String }],
+    category: { type: mongoose.Types.ObjectId, ref: "Category" },
+    properties: { type: Object },
+  },
+  { timestamps: true }
+);
 
 let ProductModel;
 

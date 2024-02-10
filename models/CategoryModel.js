@@ -6,7 +6,7 @@ import mongoose, { Schema, model, connection } from "mongoose";
 // Create a new mongoose schema for the Category
 const CategorySchema = new Schema({
   name: { type: String, required: true },
-  parent: { type: mongoose.Types.ObjectId, ref: "Category" }, // Use "Category" as the reference model name
+  parent: { type: mongoose.Types.ObjectId, ref: "Category" },
   properties: [{ type: Object }],
 });
 

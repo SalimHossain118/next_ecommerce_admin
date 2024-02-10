@@ -4,8 +4,6 @@ import { mongooseConnect } from "@/lib/mongoose";
 import { CategoryModel } from "@/models/CategoryModel";
 import mongoose from "mongoose";
 import { isAdminRequest } from "@/pages/api/auth/[...nextauth]";
-import { getServerSession } from "next-auth";
-import { authOptions } from "./auth/[...nextauth]";
 
 export default async function CategoriesController(req, res) {
   await mongooseConnect();
